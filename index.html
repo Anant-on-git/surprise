@@ -2,103 +2,87 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Important Question 💌</title>
+<title>A Tiny Question 💌</title>
 
 <style>
-
 body{
-margin:0;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#ffd6e7,#ffe8f2,#ffd6f6);
-font-family:'Poppins',sans-serif;
-overflow:hidden;
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffd6e7,#ffe8f2,#ffd6f6);
+    font-family:'Comic Sans MS','Poppins',sans-serif;
+    overflow:hidden;
 }
 
 .card{
-background:white;
-padding:40px 60px;
-border-radius:25px;
-box-shadow:0 15px 40px rgba(0,0,0,0.15);
-text-align:center;
-position:relative;
+    background:white;
+    padding:40px 60px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    text-align:center;
 }
 
 h1{
-color:#ff4d8d;
-margin-bottom:20px;
+    color:#ff4d8d;
 }
 
 button{
-border:none;
-padding:14px 26px;
-font-size:18px;
-border-radius:30px;
-cursor:pointer;
-margin:10px;
-transition:0.2s;
+    border:none;
+    padding:14px 26px;
+    font-size:18px;
+    border-radius:30px;
+    cursor:pointer;
+    margin:10px;
 }
 
 #yes{
-background:#ff4d8d;
-color:white;
+    background:#ff4d8d;
+    color:white;
+    transition:0.2s;
 }
 
 #yes:hover{
-transform:scale(1.15);
+    transform:scale(1.15);
 }
 
 #no{
-background:#f0f0f0;
-position:relative;
+    background:#f0f0f0;
+    position:relative;
 }
 
 .penguin{
-margin-top:20px;
-}
-
-.penguin img{
-width:150px;
-transition:0.3s;
+    font-size:90px;
+    margin-top:20px;
 }
 
 .message{
-color:#ff4d8d;
-font-size:16px;
-height:20px;
-margin-top:10px;
+    color:#ff4d8d;
+    font-size:16px;
+    height:20px;
 }
 
 .success{
-font-size:32px;
-color:#ff4d8d;
-text-align:center;
-margin-top:200px;
+    font-size:28px;
+    color:#ff4d8d;
 }
 
 .hearts{
-position:absolute;
-width:100%;
-height:100%;
-pointer-events:none;
+    position:absolute;
+    width:100%;
+    height:100%;
+    pointer-events:none;
 }
 
 .heart{
-position:absolute;
-animation:float 4s linear infinite;
+    position:absolute;
+    animation:float 4s linear infinite;
 }
 
 @keyframes float{
-0%{
-transform:translateY(0);
-opacity:1;
-}
-100%{
-transform:translateY(-600px);
-opacity:0;
-}
+    0%{transform:translateY(0);opacity:1}
+    100%{transform:translateY(-600px);opacity:0}
 }
 
 </style>
@@ -113,11 +97,7 @@ opacity:0;
 <button id="yes" onclick="yesClicked()">Yes 💖</button>
 <button id="no" onclick="noClicked()">No 🙈</button>
 
-<div class="penguin">
-<img id="penguinImg"
-src="https://media.tenor.com/3x63SNs9hX8AAAAi/penguin-walk.gif">
-</div>
-
+<div class="penguin" id="penguin">🐧</div>
 <div class="message" id="message"></div>
 
 </div>
@@ -132,66 +112,49 @@ function noClicked(){
 
 noCount++;
 
-let penguin=document.getElementById("penguinImg");
+let penguin=document.getElementById("penguin");
 let msg=document.getElementById("message");
 
 if(noCount==1){
-penguin.src="https://media.tenor.com/Y3XH0dX8H3IAAAAi/penguin-sad.gif";
-msg.innerText="The penguin looks sad...";
+penguin.innerHTML="🐧";
+msg.innerText="The penguin looks a little sad...";
 }
 else if(noCount==2){
-penguin.src="https://media.tenor.com/Y3XH0dX8H3IAAAAi/penguin-sad.gif";
+penguin.innerHTML="🥺";
 msg.innerText="Why would you say no to a penguin?";
 }
 else if(noCount==3){
-penguin.src="https://media.tenor.com/Y3XH0dX8H3IAAAAi/penguin-sad.gif";
-msg.innerText="Now the penguin is crying 🐧";
+penguin.innerHTML="😢";
+msg.innerText="The penguin is crying now...";
 }
 else{
-penguin.src="https://media.tenor.com/Y3XH0dX8H3IAAAAi/penguin-sad.gif";
-msg.innerText="Please don't break the penguin's heart 💔";
+penguin.innerHTML="😭";
+msg.innerText="Please don't break the penguin's heart 🐧";
 }
 
 let btn=document.getElementById("no");
-
-let x=Math.random()*300-150;
-let y=Math.random()*150-75;
-
-btn.style.transform=translate(${x}px,${y}px);
+let x=Math.random()*200-100;
+let y=Math.random()*100-50;
+btn.style.transform=`translate(${x}px,${y}px)`;
 
 }
 
 function yesClicked(){
-
-document.body.innerHTML=
-"<h1 class='success'>YAY!! The penguin is happy 🐧💖</h1><div class='hearts' id='hearts'></div>";
-
+document.body.innerHTML="<h1 class='success'>YAY!! The penguin is happy 🐧💖</h1><div class='hearts' id='hearts'></div>";
 createHearts();
-
 }
 
 function createHearts(){
-
 for(let i=0;i<40;i++){
-
 let heart=document.createElement("div");
-
 heart.className="heart";
-
 heart.innerHTML="💗";
-
 heart.style.left=Math.random()*100+"%";
-
 heart.style.bottom="-20px";
-
 heart.style.fontSize=(20+Math.random()*20)+"px";
-
 heart.style.animationDuration=(3+Math.random()*2)+"s";
-
 document.getElementById("hearts").appendChild(heart);
-
 }
-
 }
 
 </script>
