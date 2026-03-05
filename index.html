@@ -5,6 +5,7 @@
 <title>A Tiny Question 💌</title>
 
 <style>
+
 body{
     margin:0;
     height:100vh;
@@ -66,6 +67,7 @@ button{
 .success{
     font-size:28px;
     color:#ff4d8d;
+    margin:10px 0;
 }
 
 .hearts{
@@ -90,9 +92,9 @@ button{
 
 <body>
 
-<div class="card">
+<div class="card" id="card">
 
-<h1>Utkarsha, lets go out and celebrate your birthday? 🐧 </h1>
+<h1>Utkarsha, lets go out and celebrate your birthday? 🐧</h1>
 
 <button id="yes" onclick="yesClicked()">Yes 💖</button>
 <button id="no" onclick="noClicked()">No 🙈</button>
@@ -133,28 +135,47 @@ msg.innerText="Please don't break the penguin's heart 🐧";
 }
 
 let btn=document.getElementById("no");
-let x=Math.random()*200-100;
-let y=Math.random()*100-50;
+
+let x=(Math.random()-0.5)*200;
+let y=(Math.random()-0.5)*100;
+
 btn.style.transform=`translate(${x}px,${y}px)`;
 
 }
 
 function yesClicked(){
-document.body.innerHTML="<h1 class='success'>YAY!! The penguin is happy 🐧💖</h1><h2 class='success'>Now that we are going, text me to decide on a plan🐧</h2><div class='hearts' id='hearts'></div>";
+
+let card = document.getElementById("card");
+
+card.innerHTML = `
+<h1 class="success">YAY!! The penguin is happy 🐧💖</h1>
+<h2 class="success">Now that we are going, text me to decide on a plan 🐧</h2>
+`;
+
 createHearts();
+
 }
 
 function createHearts(){
+
+let container=document.getElementById("hearts");
+
 for(let i=0;i<40;i++){
+
 let heart=document.createElement("div");
+
 heart.className="heart";
 heart.innerHTML="💗";
+
 heart.style.left=Math.random()*100+"%";
 heart.style.bottom="-20px";
 heart.style.fontSize=(20+Math.random()*20)+"px";
 heart.style.animationDuration=(3+Math.random()*2)+"s";
-document.getElementById("hearts").appendChild(heart);
+
+container.appendChild(heart);
+
 }
+
 }
 
 </script>
